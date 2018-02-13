@@ -21,28 +21,21 @@ commands and `
 
 # Installation under Linux
 
-The installer MasterTwoInstall copies the files into the correct path, updates the init.m file in the .Mathematica/Autoload/directory in the home directory,
+The installer `MasterTwoInstall` copies the files into the correct path, updates the `init.m` file in the ` .Mathematica/Autoload/directory` in the home directory,
 To install the package,
-
- * copy the zip file MasterTwo-1.0.zip to your disk,
-
- * unpack it with unzip MasterTwo-1.0.zip.
-
- * Change directory to MasterTwo-1.0
-
- * Change the permission of the installation script:
+* copy the zip file `MasterTwo-1.0.zip `to your disk,
+* unpack it with `unzip MasterTwo-1.0.zip`.
+* Change directory to MasterTwo-1.0
+* Change the permission of the installation script:
   `chmod +x MasterTwoInstall`
+* Execute it: `./MasterTwoInstall `
+Follow the instructions.
 
- * Execute it: `./MasterTwoInstall `
-
-Follow the instructions... 
-
- 
 # Uninstallation under Linux
 
 Run the program `./MasterTwoUninstall` in the installation directory of `MasterTwo`.
 
-# Installatiion under  MACOS and Windows
+# Installation under  MACOS and Windows
 
 To install the package
 
@@ -57,6 +50,6 @@ if present.
 in one of the Autoload directories.
 *  Close Mathematica.
 *  In your next Mathematica session you can start the package by typing in
-`<<MasterTwo` `
+<<MasterTwo`
 
 
