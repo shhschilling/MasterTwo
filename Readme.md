@@ -1,60 +1,65 @@
-The Mathematica package MasterTwo allows the calculation of one- and two-loop integrals which can be reduced to scalar integrals independent of external momenta and depending on up to two masses. 
 
-The main programme MasterTwo.m calls the two subpackages
+# Abstract
+The Mathematica package MasterTwo allows the calculation of one* and two*loop Feynman integrals which can be reduced to scalar integrals independent of external momenta and depending on up to two different masses.
+It consists of two subpackages, Fermions~ and Integrals.  Fermions covers the standard Dirac Algebra to transform the integrals in scalar integrals. Integrals perform the subsequent Taylor expansion, partial fraction, tensor reduction and the integration of the thus achieved scalar integrals.
 
-- Fermions.m:  containing functions for standard Dirac algebra, traces etc...
 
-- Integrals.m: containing functions for Taylor expansion, tensor reduction, partial fraction
 
-The package is equipped with an on-line help to each
+# Structure
+The main programme  `MasterTwo.m` calls these two subpackages
 
-command. MasterTwoInfo[] produces a list with all the available
+* `Fermions.m`:  containing functions for standard Dirac algebra, traces etc...
 
-commands and ?command prints a short information on syntax and effect
+* `Integrals.m`: containing functions for Taylor expansion, tensor reduction, partial fraction
 
-of command.
+# Help
 
-A detailed description of all functionalities is given in the manual being part of this distribution. 
+The package is equipped with an online help to each command.
+`MasterTwoInfo[]` produces a list with all the available
+commands and `
+?command `prints a short information on syntax and effect of command. A detailed description of all functionalities is given in the manual being part of this distribution. 
 
-INSTALLATION UNDER LINUX 
+# Installation under Linux
 
-There is an installation program with the Package. It copies the files where they belong, updates the init.m
-
-file in the .Mathematica/Autoload/directory in the home directory, so that you can load the package without having to give the whole path.
-
+The installer MasterTwoInstall copies the files into the correct path, updates the init.m file in the .Mathematica/Autoload/directory in the home directory,
 To install the package,
 
- - copy the zip file MasterTwo-1.0.zip to your disk,
+ * copy the zip file MasterTwo-1.0.zip to your disk,
 
- - unpack it with unzip MasterTwo-1.0.zip.
+ * unpack it with unzip MasterTwo-1.0.zip.
 
- - Change directory to MasterTwo-1.0
+ * Change directory to MasterTwo-1.0
 
- - Change the permission of the installation script:chmod +x MasterTwoInstal
+ * Change the permission of the installation script:
+  ` chmod +x MasterTwoInstall`
 
- - Execute it: ./MasterTwoInstall 
+ * Execute it: `./MasterTwoInstall `
 
 Follow the instructions... 
 
  
-UNINSTALLATION
+# Uninstallation under Linux
 
 Run the program ./MasterTwoUninstall in the installation directory of MasterTwo.  
 
-INSTALLATION UNDER MACOS and Windows
+# Installatiion under  MACOS and Windows
 
 To install the package
 
-- Start Mathematica and type $Path in order to find out the exact path of the 
+* Quit Mathematica if it is running. Uninstall the older version of MasterTwo,
+if present.
+* Start Mathematica and type $Path in order to find out the exact path of the
+   Autoload directories of your Mathematica distribution
 
-  Autoload directories of your Mathematica distribution
+* Copy the files
+  * `Fermions.m`
+  *  `Integrals.m `
+  *  `MasterTwo.m `
 
-- Copy the files
+in one of the Autoload directories.
 
-                 Fermions.m
-
-                 Integrals.m
-
-                 MasterTwo.m  
+*  Close Mathematica.
+*  In your next Mathematica session you can start the package by typing in
+`<<MasterTwo` `
 
 
