@@ -1,0 +1,40 @@
+#!/bin/bash
+
+SabineFiles="Fermions.m Integrals.m MasterTwo.m "
+
+MasterTwoExecutables=" $PWD/MasterTwoUnInstall $PWD/MasterTwoInstall $PWD/MasterTwoUnInstall_MacOs $PWD/MasterTwoInstall_MacOs $PWD/MasterTwoWebpage.html"
+
+AdditionalFiles="$PWD/Readme.txt $PWD/Example.nb $PWD/Manual_MasterTwo.pdf"
+
+filestodelete="$SabineFiles $MasterTwoExecutables $AdditionalFiles" 
+
+
+initmdir=$HOME/.Mathematica/Autoload
+initm=$initmdir/init.m
+
+echo -n "Are you sure you want to uninstall the package MasterTwo? "
+read response
+echo
+
+case $response in
+    y | yes | ja | si | oui | sure)     [ -e $initm ] && sed "/begin of the lines added by MasterTwo/,/end of the lines added by MasterTwo/{d}" $initm >MasterTwo.init.m.temp
+    cp MasterTwo.init.m.temp $initm
+    rm MasterTwo.init.m.temp ;;
+    *) exit 0
+esac
+echo 
+
+echo "Should the files of the directory"
+echo $PWD 
+echo -n "be deleted ? " 
+read reply
+case $reply in
+    y | yes | ja | si | oui | sure) 
+    rm $filestodelete
+    for dir in `ls -rdx [0-9]*`;
+    do
+    rm  ./$dir/* 
+    rmdir $dir
+    done     ;;
+    *) echo "uninstall finished whitout removing files"; exit 0
+esac

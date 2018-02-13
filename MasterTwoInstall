@@ -1,0 +1,104 @@
+#!/bin/bash
+SabineFiles="Fermions.m Integrals.m"
+possibleinstallationpath="$HOME/MasterTwo $PWD Other"
+
+
+PZrulelist=`find . -name "PZRule*.m" -printf "%p "`
+Minimalsetlist=`find . -name "MinimalSet?.m" -printf "%p "`
+htablelist=`find . -name "h?table.mat" -printf "%p "` 
+
+
+echo
+echo 
+echo "*********************************************"
+echo This installs the MasterTwo Mathematica Package...
+echo "*********************************************"
+echo
+echo "Please select the name of the directory where"
+echo "the package should be installed."
+echo 
+select installationpath in ${possibleinstallationpath};
+do
+    if ! [ -z $installationpath ] ; then
+        if [ $installationpath == Other ]; then
+        	echo "Please give the full path of the directory to install the package:"
+        	read useripath
+        	echo
+		mkdir -p $useripath || { echo "unable to create directory, exiting...";exit; }
+	   	ipath=$useripath   		
+    	else
+    	    ipath=$installationpath;
+    	fi
+    	break;
+    else 
+    	echo "Please choose a number between 1 and 3}"
+    fi
+done
+echo
+echo "installing package in $ipath ..."
+
+MasterTwoPath=$ipath
+
+if ! [ -d $MasterTwoPath ]; then
+    mkdir -p $MasterTwoPath ;
+fi
+
+if [ $MasterTwoPath != $PWD ] ; then 
+    [ -e $MasterTwoPath/MasterTwo.m ] && {
+    	echo "There is already a version of MasterTwo.m in the directory..."
+    	echo
+    	echo -n "Deleting old version........................"
+    	rm $MasterTwoPath/MasterTwo.m
+    	echo  "Done"
+    	}
+    echo -n "Copying the package MasterTwo.................."
+    cp -f $PWD/MasterTwo.m $MasterTwoPath
+   echo  "Done"
+
+  
+    echo -n "Copying the auxiliary files................."
+    cp -f $SabineFiles $MasterTwoPath
+    
+   
+    echo  "Done"
+fi
+
+#echo "Installing libraries (might be time consuming)..."
+#echo "{KnownToOrder1}">$MasterTwoPath/.known.m
+
+#./install_libs $MasterTwoPath .
+
+# setting up Mathematica PATH
+
+
+echo "(* begin of the lines added by MasterTwo *)">install.m
+echo "\$MasterTwoPath = \"$MasterTwoPath\"" >> install.m
+echo "\$HPLPath = \"$MasterTwoPath\"" >> install.m
+echo "If[Not[MemberQ[\$Path,\$MasterTwoPath]],\$Path = Flatten[{\$Path, \$MasterTwoPath }]];">>install.m
+echo "(* end of the lines added by MasterTwo *)">>install.m
+
+initmdir=$HOME/.Mathematica/Autoload
+initm=$initmdir/init.m
+
+grep "MasterTwo" $initm >& /dev/null && { 
+    echo "Found MasterTwo lines in initialisation file, replacing with new........."
+    sed "/begin of the lines added by MasterTwo/,/end of the lines added by MasterTwo/{d}" $initm >MasterTwo.init.m.temp
+    cp MasterTwo.init.m.temp $initm; rm MasterTwo.init.m.temp;echo "Done" 
+}  
+cat install.m >> $initm;
+#done
+echo 
+
+echo -n  "Cleaning up ................................"
+
+rm $PWD/install.m
+
+echo "Done"
+echo
+echo Installation successful!
+echo 
+echo Before first usage, a new MATHEMATICA session has to be started. 
+echo
+echo The package can then be called with:
+echo
+echo  "    \" <<MasterTwo\` \" "
