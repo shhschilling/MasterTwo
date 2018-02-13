@@ -1,8 +1,11 @@
 
 # Purpose
-The Mathematica package MasterTwo allows automated  calculation of  all one- and two-loop Feynman integrals reducable to scalar integrals independent of external momenta and depending on up to two different masses.
-It consists of two subpackages, `Fermions` and `Integrals`.  `Fermions` covers the standard Dirac Algebra allowing the transformation of the integrals in scalar integrals. `Integrals` perform the subsequent Taylor expansion, partial fraction, tensor reduction and the integration of the thus achieved scalar integrals.
 
+The calculation of loop decays is a tedious work, which can rarely be performed in a reasonable time by calculating all arising diagrams by hand.
+The Mathematica package `MasterTwo `allows the automated  calculation of  all one- and two-loop Feynman integrals reducable to scalar integrals independent of external momenta and depending on up to two different masses. In contrast to other programmes like `Reduce`and `Form` it works completely inside `Mathematica`. Compared to other programmes like `HIP`, `Tracer` and `FeynArts` , `MasterTwo` is
+much smaller.
+
+It consists of two subpackages, `Fermions` and `Integrals`.  `Fermions` covers the standard Dirac Algebra allowing the transformation of the integrals in scalar integrals. `Integrals` perform the subsequent Taylor expansion, partial fraction, tensor reduction and the integration of the thus achieved scalar integrals.
 
 
 # Structure
@@ -25,7 +28,7 @@ The installer `MasterTwoInstall` copies the files into the correct path, updates
 To install the package,
 * copy the zip file `MasterTwo-1.0.zip `to your disk,
 * unpack it with `unzip MasterTwo-1.0.zip`.
-* Change directory to MasterTwo-1.0
+* Change directory to `MasterTwo-1.0`
 * Change the permission of the installation script:
   `chmod +x MasterTwoInstall`
 * Execute it: `./MasterTwoInstall `
@@ -39,8 +42,7 @@ Run the program `./MasterTwoUninstall` in the installation directory of `MasterT
 
 To install the package
 
-* Quit `Mathematica` . Uninstall  older version of `MasterTwo`,
-if present.
+* Quit `Mathematica` . Eventually uninstall  older version of `MasterTwo`.
 * Start Mathematica
 * Type $Path: Lists the path(s)  of the Autoload directories of your Mathematica distribution
 * Copy the files
