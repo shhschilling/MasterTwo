@@ -18,9 +18,8 @@ The main programme  `MasterTwo.m` calls these two subpackages
 # Help
 
 The package is equipped with an online help to each command.
-`MasterTwoInfo[]` produces a list with all the available
-commands and `
-?command `prints a short information on syntax and effect of command. A detailed description of all functionalities is given in the manual being part of this distribution.
+`MasterTwoInfo[]` produces a list with all  available commands.
+`?command ` prints a short information on syntax and effect of the command. A detailed description of all functionalities is given in the manual being part of this distribution.
 
 # Installation under Linux
 
@@ -38,20 +37,20 @@ Follow the instructions.
 
 Run the program `./MasterTwoUninstall` in the installation directory of `MasterTwo`.
 
-# Installation under  MACOS and Windows
+# Installation under macOS and Windows
 
 To install the package
 
-* Quit `Mathematica` . Eventually uninstall  older version of `MasterTwo`.
+* Quit `Mathematica` . Eventually uninstall older version of `MasterTwo`.
 * Start Mathematica
-* Type $Path: Lists the path(s)  of the Autoload directories of your Mathematica distribution
+* Type $Path: Lists the path(s)  of the autoload directories of your Mathematica distribution
 * Copy the files
   * `Fermions.m`
   *  `Integrals.m `
   *  `MasterTwo.m `
-in one of the Autoload directories.
+in one of the autoload directories.
 *  Close Mathematica.
-*  In your next Mathematica session you can start the package by typing in
-<<MasterTwo`
+*  In your next Mathematica session  start the package by typing in
+`<<MasterTwo`  `
 
 
